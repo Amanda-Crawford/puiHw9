@@ -119,6 +119,7 @@ axios.post('/user', {
 ***********************************************/
 
 //Update the user "Luke Skywalker" and add his favorite thing
+//PUT will create a new user if Luke Skywalker does not exist yet
 axios.post('/user', {
   firstName: 'Luke',
   lastName: 'Skywalker',
@@ -139,15 +140,27 @@ axios.post('/user', {
   *       Delete REQUESTS
   *
   ***********************************************/
+  //Delete the product who's ide is 1458
+  axios.delete('/product/1458')
+  .then(function (response) {
+    console.log("DELETE /product/1458 succeeded at deleting product with id 1458.  Returned should be a 200 status code.");
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log("DELETE /product/1458 failed at deleting product with id 1458.  Returned should be a 500 or 400 status code.");
+    console.log(error);
+  });
 
+
+//Delete the product who's ide is 1458 alternate formatting
 axios.delete('/product', {
   id: 1458
 })
 .then(function (response) {
-  console.log("DELETE /product/1458 succeeded at deleting product with id 1458.  Returned should be a 200 status code.");
+  console.log("DELETE /product succeeded at deleting product with id 1458.  Returned should be a 200 status code.");
   console.log(response);
 })
 .catch(function (error) {
-  console.log("DELETE /product/1458 failed at deleting product with id 1458.  Returned should be a 500 or 400 status code.");
+  console.log("DELETE /product failed at deleting product with id 1458.  Returned should be a 500 or 400 status code.");
   console.log(error);
 });
